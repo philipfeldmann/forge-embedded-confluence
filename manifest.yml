@@ -1,0 +1,49 @@
+modules:
+  confluence:globalPage:
+    - key: embedded-confluence-hello-world
+      resource: main
+      resolver:
+        function: resolver
+      title: embedded-confluence
+      route: hello-world
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: static/hello-world/build
+
+permissions:
+  scopes:
+    - search:confluence
+    - read:space:confluence
+    - read:page:confluence
+
+  content:
+    styles:
+      - unsafe-inline
+    scripts:
+      - unsafe-inline
+      - unsafe-eval
+
+  external:
+    scripts:
+      - "*"
+    media:
+      - "*"
+    frames:
+      - "*"
+    styles:
+      - "*"
+    images:
+      - "*"
+    fonts:
+      - "*"
+    fetch:
+      client:
+        - "*"
+
+app:
+  runtime:
+    name: nodejs18.x
+  id: ari:cloud:ecosystem::app/56391ae8-eaa2-4a87-a51e-6869beb8362b
